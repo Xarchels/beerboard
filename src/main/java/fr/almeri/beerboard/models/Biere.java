@@ -21,7 +21,7 @@ public class Biere {
     private String version;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="type")
+    @JoinColumn(name="no_type")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Type type;
 
@@ -34,7 +34,7 @@ public class Biere {
     @Column(name = "caracteristiques")
     private String caracteristiques;
 
-    public  Biere(){
+    public Biere(){
 
     }
 

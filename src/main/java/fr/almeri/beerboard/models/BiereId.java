@@ -17,6 +17,8 @@ public class BiereId implements Serializable {
     private Marque marque;
     private String version;
 
+    public BiereId(){}
+
     public BiereId(Marque marque, String version) {
         this.marque = marque;
         this.version = version;
