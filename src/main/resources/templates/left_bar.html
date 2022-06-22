@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LeftBar</title>
+</head>
+<body>
+<div id="layoutSidenav_nav">
+    <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+            <div class="nav">
+                <div class="sb-sidenav-menu-heading">GENERAL</div>
+                <a class="nav-link" th:href="@{/}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Dashboard
+                </a>
+                <a class="nav-link" th:href="@{/profile}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-user-alt"></i></div>
+                    Profil
+                </a>
+                <div class="sb-sidenav-menu-heading">DETAILS</div>
+                <a class="nav-link" th:href="@{/bieres}">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-beer-mug-empty"></i></div>
+                    Liste des bières
+                </a>
+                <a class="nav-link" th:href="@{/breweries}">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-list"></i></div>
+                    Liste des brasseries
+                </a>
+                <div class="sb-sidenav-menu-heading">ADMINISTRATION</div>
+                <a class="nav-link" th:href="@{/bieres/ajout}">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-beer-mug"></i></i></div>
+                    Ajouter une bière
+                </a>
+                <a class="nav-link" th:href="@{/breweries/ajout}">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-house"></i></div>
+                    Ajouter une brasserie
+                </a>
+            </div>
+        </div>
+        <div class="sb-sidenav-footer">
+            <div class="small">Connecté en tant que:</div>
+            <span th:text="${session.email}"></span>
+            <a th:href="@{/logout}">Déconnexion</a>
+        </div>
+    </nav>
+</div>
+</body>
+</html>
