@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>BEERBOARD</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet"/>
+    <link th:href="@{~/css/styles.css}" rel="stylesheet"/>
+    <link th:href="@{~/css/custom.css}" rel="stylesheet"/>
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+<body class="sb-nav-fixed">
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+
+    <!-- Navbar Brand-->
+    <a class="navbar-brand ps-3" th:href="@{/index}">Dashboard</a>
+
+    <!-- Sidebar Toggle-->
+    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+            class="fas fa-bars"></i></button>
+</nav>
+<div id="layoutSidenav">
+    <div th:insert="~{/left_bar}"></div>
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <h1 class="mt-4">Détail de la brasserie</h1>
+                <!--        <ol class="breadcrumb mb-4">-->
+                <!--          <li class="breadcrumb-item"><a th:href="@{/index}">Dashboard</a></li>-->
+                <!--          <li class="breadcrumb-item active"><a th:href="@{/beers}">Liste des bières</a></li>-->
+                <!--          <li class="breadcrumb-item active">Détail de la bière</li>-->
+                <!--        </ol>-->
+                <form method="post" th:action="@{/add-brewery}">
+                    <div class="content mt-3">
+                        <div class="animated fadeIn">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-header"><strong>Brasserie</strong></div>
+                                        <div class="card-body">
+
+                                            <div class="form-group">
+                                                <label class="form-control-label"> Identifiant de la brasserie
+                                                    : </label>
+                                                <input class="form-control"
+                                                       type="text"
+                                                       name="reference"
+                                                       th:value="${brasserie.getCodeBrasserie()}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-control-label"> Nom de la brasserie
+                                                    : </label>
+                                                <input class="form-control" type="text" name="identifiant"
+                                                       th:value="${brasserie.getNomBrasserie()}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-control-label"> Ville : </label>
+                                                <input class="form-control" type="text" name="ville"
+                                                       th:value="${brasserie.getVille()}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-control-label"> Région : </label>
+                                                <input class="form-control" type="text" name="region"
+                                                       th:value="${brasserie.getRegion().getNomRegion()} + '-' + ${brasserie.getRegion().getPays().getNomPays()}">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="button" class="btn btn-submit" name="btn_ajout"
+                                                       value="Ajouter la brasserie">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- .content -->
+                    </div>
+                </form>
+            </div>
+        </main>
+        <div th:insert="~{/footer}"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            crossorigin="anonymous"></script>
+    <script th:src="@{~/js/scripts.js}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script th:src="@{~/js/datatables-simple-demo.js}"></script>
+</div>
+</body>
+</html>
+
