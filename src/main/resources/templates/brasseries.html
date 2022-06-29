@@ -26,6 +26,7 @@
         <main>
             <div class="container-fluid px-4">
                 <h1 class="mt-4">Liste des brasseries</h1>
+                <label th:text="${msg}" style="color: red"/>
                 <!--        <ol class="breadcrumb mb-4">-->
                 <!--          <li class="breadcrumb-item active">Sous-titre</li>-->
                 <!--        </ol>-->
@@ -33,7 +34,7 @@
                     <table class="table table-bordered table-striped" id="datatablesSimple">
                         <thead>
                         <th>Code brasserie</th>
-                        <th>Nom brasserie</th>Chassignolles, 36400
+                        <th>Nom brasserie</th>
                         <th>Ville</th>
                         <th>Region</th>
                         <th>Consulter</th>
@@ -52,7 +53,7 @@
                                         class="fas fa-eye"></i></a></td>
                                 <td><a th:href="@{'/see-brewery1?code='+${brasserie.getCodeBrasserie()}}"><i
                                         class="fas fa-eye"></i></a></td>
-                                <td><a th:href="@{'/add-brewery?code='+${brasserie.getCodeBrasserie()}}"><i
+                                <td><a th:href="@{'/modify-brewery?code='+${brasserie.getCodeBrasserie()}}"><i
                                         class="fa-solid fa-pencil"></i></a></td>
                                 <td><a th:href="@{'/delete-brewery?code='+${brasserie.getCodeBrasserie()}}"><i
                                         class="fa-solid fa-trash-can"></i></a></td>

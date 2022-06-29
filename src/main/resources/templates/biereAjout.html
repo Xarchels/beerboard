@@ -27,7 +27,12 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Ajouter une bière</h1>
+                <div th:if="${action == 'add'}">
+                    <h1 class="mt-4">Ajouter une bière</h1>
+                </div>
+                <div th:if="${action == 'update'}">
+                    <h1 class="mt-4">Modifier une bière</h1>
+                </div>
                 <label th:text="${msg}" style="color: red"/>
                 <!--        <ol class="breadcrumb mb-4">-->
                 <!--          <li class="breadcrumb-item"><a th:href="@{/index}">Dashboard</a></li>-->
@@ -46,24 +51,40 @@
                                             <div class="form-group">
                                                 <label class="form-control-label"> Marque*
                                                     : </label>
-                                                <div th:if="${listMarque != null and not #lists.isEmpty(listMarque)}">
-                                                    <select class="form-select" name="marque" th:field="*{marque}">
-                                                        <option th:each="m : ${listMarque}"
-                                                                th:value="${m.getNomMarque()}"
-                                                                th:text="${m.getNomMarque()}"/>
-                                                    </select>
+                                                <div th:if="${action == 'add'}">
+                                                    <div th:if="${listMarque != null and not #lists.isEmpty(listMarque)}">
+                                                        <select class="form-select" name="marque" th:field="*{marque}">
+                                                            <option th:each="m : ${listMarque}"
+                                                                    th:value="${m.getNomMarque()}"
+                                                                    th:text="${m.getNomMarque()}"/>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div th:if="${action == 'update'}">
+                                                    <input class="form-control"
+                                                           type="text"
+                                                           name="marque.nomMarque"
+                                                           th:field="*{marque.nomMarque}" readonly>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="form-control-label"> Version*
                                                     : </label>
-                                                <input class="form-control" type="text" name="version"
-                                                       th:field="*{version}">
+                                                <div th:if="${action == 'add'}">
+                                                    <input class="form-control" type="text" name="version"
+                                                           th:field="*{version}">
+                                                </div>
+                                                <div th:if="${action == 'update'}">
+                                                    <input class="form-control" type="text" name="version"
+                                                           th:field="*{version}" readonly>
+                                                </div>
+
                                             </div>
                                             <div class="form-group">
                                                 <label class="form-control-label"> Type* : </label>
                                                 <div th:if="${listType != null and not #lists.isEmpty(listType)}">
-                                                    <select class="form-select" name="type.noType" th:field="*{type.noType}">
+                                                    <select class="form-select" name="type.noType"
+                                                            th:field="*{type.noType}">
                                                         <option th:each="t : ${listType}"
                                                                 th:value="${t.getNoType()}"
                                                                 th:text="${t.getNomType()}"/>
@@ -85,9 +106,16 @@
                                                 <input class="form-control" type="text" name="caracteristiques"
                                                        th:field="*{caracteristiques}">
                                             </div>
+                                            <input name="action" th:value="${action}" hidden>
                                             <div class="form-group right" style="margin-top: 20px;">
-                                                <input type="submit" class="btn btn-primary" name="btn_ajout"
-                                                       value="Ajouter la brasserie">
+                                                <div th:if="${action == 'add'}">
+                                                    <input type="submit" class="btn btn-primary" name="btn_ajout"
+                                                           value="Ajouter la biere">
+                                                </div>
+                                                <div th:if="${action == 'update'}">
+                                                    <input type="submit" class="btn btn-primary" name="btn_ajout"
+                                                           value="Modifier la biere">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

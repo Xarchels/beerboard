@@ -27,7 +27,12 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Ajouter une brasserie</h1>
+                <div th:if="${action == 'add'}">
+                    <h1 class="mt-4">Ajouter une brasserie</h1>
+                </div>
+                <div th:if="${action == 'update'}">
+                    <h1 class="mt-4">Modifier une brasserie</h1>
+                </div>
                 <label th:text="${msg}" style="color: red"/>
                 <!--        <ol class="breadcrumb mb-4">-->
                 <!--          <li class="breadcrumb-item"><a th:href="@{/index}">Dashboard</a></li>-->
@@ -46,10 +51,18 @@
                                             <div class="form-group">
                                                 <label class="form-control-label"> Identifiant de la brasserie*
                                                     : </label>
-                                                <input class="form-control"
-                                                       type="text"
-                                                       name="code"
-                                                       th:field="*{codeBrasserie}">
+                                                <div th:if="${action == 'add'}">
+                                                    <input class="form-control"
+                                                           type="text"
+                                                           name="code"
+                                                           th:field="*{codeBrasserie}">
+                                                </div>
+                                                <div th:if="${action == 'update'}">
+                                                    <input class="form-control"
+                                                           type="text"
+                                                           name="code"
+                                                           th:field="*{codeBrasserie}" readonly>
+                                                </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="form-control-label"> Nom de la brasserie*
@@ -72,9 +85,17 @@
                                                     </select>
                                                 </div>
                                             </div>
+                                            <input name="action" th:value="${action}" hidden>
                                             <div class="form-group right" style="margin-top: 20px;">
-                                                <input type="submit" class="btn btn-primary" name="btn_ajout"
-                                                       value="Ajouter la brasserie">
+                                                <div th:if="${action == 'add'}">
+                                                    <input type="submit" class="btn btn-primary" name="btn_ajout"
+                                                           value="Ajouter la brasserie">
+                                                </div>
+                                                <div th:if="${action == 'update'}">
+                                                    <input type="submit" class="btn btn-primary" name="btn_ajout"
+                                                           value="Modifier la brasserie">
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
