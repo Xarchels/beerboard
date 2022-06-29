@@ -27,50 +27,63 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Ajouter une brasserie</h1>
+                <h1 class="mt-4">Ajouter une bière</h1>
                 <label th:text="${msg}" style="color: red"/>
                 <!--        <ol class="breadcrumb mb-4">-->
                 <!--          <li class="breadcrumb-item"><a th:href="@{/index}">Dashboard</a></li>-->
                 <!--          <li class="breadcrumb-item active"><a th:href="@{/beers}">Liste des bières</a></li>-->
                 <!--          <li class="breadcrumb-item active">Détail de la bière</li>-->
                 <!--        </ol>-->
-                <form method="post" th:action="@{/add-brewery-confirm}" th:object="${brasserie}">
+                <form method="post" th:action="@{/add-beer-confirm}" th:object="${biere}">
                     <div class="content mt-3">
                         <div class="animated fadeIn">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="card">
-                                        <div class="card-header"><strong>Brasserie</strong></div>
+                                        <div class="card-header"><strong>Bière</strong></div>
                                         <div class="card-body">
 
                                             <div class="form-group">
-                                                <label class="form-control-label"> Identifiant de la brasserie*
+                                                <label class="form-control-label"> Marque*
                                                     : </label>
-                                                <input class="form-control"
-                                                       type="text"
-                                                       name="code"
-                                                       th:field="*{codeBrasserie}">
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="form-control-label"> Nom de la brasserie*
-                                                    : </label>
-                                                <input class="form-control" type="text" name="nom"
-                                                       th:field="*{nomBrasserie}">
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="form-control-label"> Ville* : </label>
-                                                <input class="form-control" type="text" name="ville"
-                                                       th:field="*{ville}">
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="form-control-label"> Région* : </label>
-                                                <div th:if="${listRegion != null and not #lists.isEmpty(listRegion)}">
-                                                    <select class="form-select" name="region" th:field="*{region}">
-                                                        <option th:each="r : ${listRegion}"
-                                                                th:value="${r.getNomRegion()}"
-                                                                th:text="${r.getNomRegion()}"/>
+                                                <div th:if="${listMarque != null and not #lists.isEmpty(listMarque)}">
+                                                    <select class="form-select" name="marque" th:field="*{marque}">
+                                                        <option th:each="m : ${listMarque}"
+                                                                th:value="${m.getNomMarque()}"
+                                                                th:text="${m.getNomMarque()}"/>
                                                     </select>
                                                 </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-control-label"> Version*
+                                                    : </label>
+                                                <input class="form-control" type="text" name="version"
+                                                       th:field="*{version}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-control-label"> Type* : </label>
+                                                <div th:if="${listType != null and not #lists.isEmpty(listType)}">
+                                                    <select class="form-select" name="type.noType" th:field="*{type.noType}">
+                                                        <option th:each="t : ${listType}"
+                                                                th:value="${t.getNoType()}"
+                                                                th:text="${t.getNomType()}"/>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-control-label"> Couleur de la bière* : </label>
+                                                <input class="form-control" type="text" name="couleur"
+                                                       th:field="*{couleurBiere}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-control-label"> Taux d'alcool* : </label>
+                                                <input class="form-control" type="number" step="0.01" name="tauxAlcool"
+                                                       th:field="*{tauxAlcool}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-control-label"> Caractéristiques : </label>
+                                                <input class="form-control" type="text" name="caracteristiques"
+                                                       th:field="*{caracteristiques}">
                                             </div>
                                             <div class="form-group right" style="margin-top: 20px;">
                                                 <input type="submit" class="btn btn-primary" name="btn_ajout"

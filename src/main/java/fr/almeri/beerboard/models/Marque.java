@@ -19,6 +19,10 @@ public class Marque {
 
     public Marque() {}
 
+    public Marque(String nomMarque) {
+        this.nomMarque = nomMarque;
+    }
+
     public String getNomMarque() {
         return nomMarque;
     }

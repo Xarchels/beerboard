@@ -62,6 +62,11 @@ public class Biere {
         this.type = type;
     }
 
+//    public void setTypeStr(String typeStr) {
+//        Integer type =
+//        this.type = type;
+//    }
+
     public String getCouleurBiere() {
         return couleurBiere;
     }
